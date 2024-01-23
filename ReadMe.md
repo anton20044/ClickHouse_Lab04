@@ -18,13 +18,13 @@ SELECT * FROM tbl1;
 
 SELECT * FROM tbl1 final;
 
-2) Таблица tbl2, используемый движок ReplacingMergeTree(), т.к. есть необходимость удалять дублирующие записи по ключу сортировки.
+2) Таблица tbl2, используемый движок SummingMergeTree(), т.к. есть необходимость суммировать записи по первичному ключу.
 CREATE TABLE tbl2
 (
     key UInt32,
     value UInt32
 )
-ENGINE = ReplacingMergeTree()
+ENGINE = SummingMergeTree()
 ORDER BY key;
 
 INSERT INTO tbl2 Values(1,1),(1,2),(2,1);
